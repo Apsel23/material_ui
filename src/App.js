@@ -7,7 +7,7 @@ import { Rightbar } from './components/Rightbar'
 import { Sidebar } from './components/Sidebar'
 
 function App() {
-  const [mode, setMode] = useState('dark')
+  const [mode, setMode] = useState('light')
   const  theme=createTheme({
     palette:{
       mode:mode
@@ -16,9 +16,9 @@ function App() {
   return (
    <ThemeProvider theme={theme} >
      <Box bgcolor={'background.default'} color={'text.primary'}>
-      <Navbar />
+      <Navbar setMode={setMode} mode={mode}  />
      <Stack direction="row" spacing={2} justifyContent="space-between">
-     <Sidebar setMode={setMode} />
+     <Sidebar setMode={setMode} mode={mode} />
       <Feed />
       <Rightbar />
      </Stack>

@@ -19,9 +19,13 @@ import {
 } from '@mui/material'
 import React from 'react'
 
-export const Sidebar = ({ setMode }) => {
+export const Sidebar = ({ setMode, mode, displayForMobile }) => {
   return (
-    <Box flex={1} p={2} sx={{ display: { xs: 'none', sm: 'block' } }}>
+    <Box
+      flex={1}
+      p={2}
+      sx={{ display: { xs: displayForMobile ? 'block' : 'none', sm: 'block' } }}
+    >
       <Box position={'fixed'}>
         <List>
           <ListItem disablePadding>
@@ -86,7 +90,11 @@ export const Sidebar = ({ setMode }) => {
                 <ModeNight />
               </ListItemIcon>
               <Switch
-                onChange={(e) => setMode(e.target.checked ? 'dark' : 'light')}
+                onChange={(e) => {
+                  console.log('modePressed', mode)
+                  setMode(e.target.checked ? 'dark' : 'light')
+                }}
+                checked={mode === 'dark'}
               />
             </ListItemButton>
           </ListItem>
